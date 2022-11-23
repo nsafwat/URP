@@ -1,2 +1,2 @@
-# UGPL
+# URP
 Python program
