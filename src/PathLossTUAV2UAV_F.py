@@ -91,7 +91,7 @@ def PathLossTUAV2UAV_F(env = None,f = None,h_ms = None,A2G_Tx = None,A2G_Rx = No
 #                   24*(seta_TUAV2UAV/seta_3db)^2+20*log10(1);
 #         seta_TUAV2UAV_R=vpasolve(eqn_3==0,seta_TUAV2UAV,[90 0]);
             ##function fun_1
-            seta_TUAV2UAV_R = sp.optimize.fsolve(fun_1(PL,f,h_dlta_TUAV_UAV,seta_3db,Go),20)
+            seta_TUAV2UAV_R = sp.optimize.fsolve(fun_1(PL,f,h_dlta_TUAV_UAV,seta_3db,Go),1)
             dist_TUAV_UAV_c = h_dlta_TUAV_UAV / np.tan(3.14 / 180 * seta_TUAV2UAV_R)
             #           dist_TUAV_UAV_c=h_dlta_TUAV_UAV/tan(3.14/180*seta_TUAV2UAV_C);
         #====in case of NLOS=================================#
@@ -107,7 +107,7 @@ def PathLossTUAV2UAV_F(env = None,f = None,h_ms = None,A2G_Tx = None,A2G_Rx = No
 #             (1*(1/(a_A2A*exp(-b_A2A*(0-a_A2A))+1))));
 #        dist_TUAV_UAV_c=vpasolve(eqn_3==0,dist_TUAV_UAV);
             ##function fun_2
-            dist_TUAV_UAV_c = sp.optimize.fsolve(fun_2(PL,f,Go,h_B,h_UAV,L_r,a_A2A,b_A2A),1000)
+            dist_TUAV_UAV_c = sp.optimize.fsolve(fun_2(PL,f,Go,h_B,h_UAV,L_r,a_A2A,b_A2A),1)
         else:
             #          syms eqn_3 seta_TUAV2UAV
 #          eqn_3=-PL+(-147.5+20*log10(f)+20*log10(h_dlta_TUAV_UAV)-...
